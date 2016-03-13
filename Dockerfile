@@ -4,9 +4,10 @@ ENV HOME /root
 ENV LANG en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 
-RUN apt-get update; \
-apt-get install -yq openssh-server rsync; \
-apt-get clean
+RUN set -x \
+    && apt-get update --quiet \
+    && apt-get install --quiet --yes --no-install-recommends openssh-server rsync \
+    && apt-get clean
 
 VOLUME ["/data"]
 
