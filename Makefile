@@ -1,5 +1,8 @@
 default: build
 
+clean:
+	docker rmi bborbe/backup-rsync
+
 build:
 	docker build --rm=true -t bborbe/backup-rsync .
 
