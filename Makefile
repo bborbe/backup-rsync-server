@@ -9,7 +9,7 @@ build:
 run:
 	docker run -h example.com -p 2222:22 -v /tmp:/backup-rsync  bborbe/backup-rsync:latest
 
-bash:
+shell:
 	docker run -i -t bborbe/backup-rsync:latest /bin/bash
 
 upload:
