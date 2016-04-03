@@ -4,7 +4,7 @@ clean:
 	docker rmi bborbe/backup-rsync
 
 build:
-	docker build --rm=true -t bborbe/backup-rsync .
+	docker build --no-cache --rm=true -t bborbe/backup-rsync .
 
 run:
 	docker run -h example.com -p 2222:22 -v /tmp:/backup-rsync  bborbe/backup-rsync:latest
