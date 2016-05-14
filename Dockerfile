@@ -12,7 +12,6 @@ RUN set -x \
 	&& apt-get clean
 
 VOLUME ["/data"]
-VOLUME ["/etc/ssh/keys"]
 
 RUN mkdir /var/run/sshd
 #RUN echo 'root:screencast' | chpasswd
