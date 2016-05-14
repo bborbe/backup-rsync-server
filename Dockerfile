@@ -12,6 +12,7 @@ RUN set -x \
 	&& apt-get clean
 
 VOLUME ["/data"]
+VOLUME ["/etc/ssh/keys"]
 
 RUN mkdir /var/run/sshd
 #RUN echo 'root:screencast' | chpasswd
@@ -26,6 +27,10 @@ RUN mkdir -p /root/.ssh
 RUN chmod 700 /root /root/.ssh
 ADD authorized_keys /root/.ssh/
 RUN chmod 600 /root /root/.ssh/authorized_keys
+
+ADD ssh_config /etc/ssh/
+ADD sshd_config /etc/ssh/
+RUN chmod 644 /etc/ssh/ssh_config /etc/ssh/sshd_config
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
