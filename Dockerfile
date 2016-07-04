@@ -5,11 +5,11 @@ ENV LANG en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 
 RUN set -x \
-	&& apt-get update --quiet \
-	&& apt-get upgrade --quiet --yes \
-	&& apt-get install --quiet --yes --no-install-recommends openssh-server rsync \
-	&& apt-get autoremove --yes \
-	&& apt-get clean
+	&& DEBIAN_FRONTEND=noninteractive apt-get update --quiet \
+	&& DEBIAN_FRONTEND=noninteractive apt-get upgrade --quiet --yes \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install --quiet --yes --no-install-recommends openssh-server rsync \
+	&& DEBIAN_FRONTEND=noninteractive apt-get autoremove --yes \
+	&& DEBIAN_FRONTEND=noninteractive apt-get clean
 
 VOLUME ["/data"]
 
