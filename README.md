@@ -1,4 +1,4 @@
-# Backup-Rsync Dockerfile
+# Backup Rsync Server Dockerfile
 
 Endpoint for backup via rsync over ssh
 
