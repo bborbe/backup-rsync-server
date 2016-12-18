@@ -24,11 +24,11 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 RUN mkdir -p /root/.ssh
 RUN chmod 700 /root /root/.ssh
-ADD authorized_keys /root/.ssh/
+COPY authorized_keys /root/.ssh/
 RUN chmod 600 /root /root/.ssh/authorized_keys
 
-ADD ssh_config /etc/ssh/
-ADD sshd_config /etc/ssh/
+COPY ssh_config /etc/ssh/
+COPY sshd_config /etc/ssh/
 RUN chmod 644 /etc/ssh/ssh_config /etc/ssh/sshd_config
 
 EXPOSE 22
