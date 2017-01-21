@@ -9,11 +9,15 @@ clean:
 build:
 	docker build --build-arg VERSION=$(VERSION) --no-cache --rm=true -t $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION) .
 
+upload:
+	docker push $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)
+
 run:
-	docker run -h example.com -p 2222:22 -v /tmp:/backup-rsync-server  $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)
+	docker run \
+	--publish 2222:22 \
+	--volume /tmp:/backup \
+	$(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)
 
 shell:
 	docker run -i -t $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION) /bin/bash
 
-upload:
-	docker push $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)
