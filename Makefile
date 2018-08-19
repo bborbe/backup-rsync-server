@@ -7,7 +7,7 @@ clean:
 	docker rmi $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)
 
 build:
-	docker build --build-arg VERSION=$(VERSION) --no-cache --rm=true -t $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION) .
+	docker build --no-cache --rm=true -t $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION) .
 
 upload:
 	docker push $(REGISTRY)/bborbe/backup-rsync-server:$(VERSION)

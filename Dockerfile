@@ -1,6 +1,5 @@
 FROM ubuntu:16.04
 MAINTAINER Benjamin Borbe <bborbe@rocketnews.de>
-ARG VERSION
 
 ENV HOME /root
 ENV LANG en_US.UTF-8
@@ -31,11 +30,11 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 RUN mkdir -p /root/.ssh
 RUN chmod 700 /root /root/.ssh
-COPY authorized_keys /root/.ssh/
+COPY files/authorized_keys /root/.ssh/
 RUN chmod 600 /root /root/.ssh/authorized_keys
 
-COPY ssh_config /etc/ssh/
-COPY sshd_config /etc/ssh/
+COPY files/ssh_config /etc/ssh/
+COPY files/sshd_config /etc/ssh/
 RUN chmod 644 /etc/ssh/ssh_config /etc/ssh/sshd_config
 
 EXPOSE 22
